@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.20.3",
     "axios": "^1.7.9",
     "js-cookie": "^3.0.5",
     "khalti-checkout-web": "^2.2.0",

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import axios from "axios";
 import img from "/signin.jpg";
 import L from "leaflet";
@@ -10,8 +10,8 @@ const Signup = () => {
     password: "",
     phone: "",
     bio: "",
-    latitude: "0",
-    longitude: "0",
+    latitude: "",
+    longitude: "",
     roles: "User", // Default role as 'User'
   });
 
@@ -23,6 +23,60 @@ const Signup = () => {
   const [map, setMap] = useState(null); // State to hold map reference
   const mapContainer = useRef(null); // Ref for map container
 
+  // Step 1: Get user's current location using the browser's geolocation API
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          
+          // Update the form data with latitude and longitude
+          setFormData((prevData) => ({
+            ...prevData,
+            latitude,
+            longitude,
+          }));
+
+          // Initialize Leaflet map with the user's location
+          if (mapContainer.current && !map) {
+            const initialMap = L.map(mapContainer.current, {
+              center: [latitude, longitude], // Use the user's latitude and longitude
+              zoom: 15,
+            });
+
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(initialMap);
+
+            const marker = L.marker([latitude, longitude]).addTo(initialMap);
+            
+            // Update the latitude and longitude when the map is clicked
+            initialMap.on("click", (e) => {
+              setFormData({
+                ...formData,
+                latitude: e.latlng.lat,
+                longitude: e.latlng.lng,
+              });
+
+              // Move the marker to the clicked location
+              marker.setLatLng(e.latlng);
+            });
+
+            setMap(initialMap); // Save map reference in state
+          }
+        },
+        (error) => {
+          console.error("Error getting geolocation", error);
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }, [map, formData]);
+
+  // Handle input change for form fields
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -30,13 +84,16 @@ const Signup = () => {
     });
   };
 
+  // Handle file input change
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
+  // Submit the form data and save it to the database
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSigningUp(true);
+    
     const data = new FormData();
     Object.keys(formData).forEach((key) => data.append(key, formData[key]));
     if (file) data.append("img", file);
@@ -56,6 +113,7 @@ const Signup = () => {
     }
   };
 
+  // Step navigation (Next and Previous buttons)
   const handleNext = () => {
     setStep(step + 1);
   };
@@ -63,37 +121,6 @@ const Signup = () => {
   const handlePrev = () => {
     setStep(step - 1);
   };
-
-  // Initialize Leaflet map when component mounts
-  useEffect(() => {
-    if (mapContainer.current && !map) {
-      const initialMap = L.map(mapContainer.current, {
-        center: [37.4239163, -122.0947209], // Default center coordinates
-        zoom: 17,
-      });
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(initialMap);
-
-      // Set initial marker
-      const marker = L.marker([37.4239163, -122.0947209]).addTo(initialMap);
-
-      // Update latitude and longitude when user clicks the map
-      initialMap.on('click', (e) => {
-        setFormData({
-          ...formData,
-          latitude: e.latlng.lat,
-          longitude: e.latlng.lng,
-        });
-
-        // Move marker to clicked position
-        marker.setLatLng(e.latlng);
-      });
-
-      setMap(initialMap); // Save map reference in state
-    }
-  }, [map, formData]); // Only initialize map once
 
   return (
     <div className="min-h-screen bg-bgColor flex items-center justify-center py-10 mt-16">
