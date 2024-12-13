@@ -50,22 +50,22 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="bg-bgColor text-textColor py-10">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section className="py-10 bg-bgColor text-textColor">
+      <div className="container px-6 mx-auto lg:px-12">
         {/* Categories Slider */}
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Browse Categories</h2>
-          <div className="overflow-hidden relative">
-            <div className="flex animate-slide space-x-8 py-4">
+          <h2 className="mb-4 text-2xl font-semibold">Browse Categories</h2>
+          <div className="relative overflow-hidden">
+            <div className="flex py-4 space-x-8 animate-slide">
               {categories.concat(categories).map((category, index) => (
                 <div
                   key={`${category.id}-${index}`}
-                  className="flex-shrink-0 w-24 h-24 flex flex-col items-center space-y-2"
+                  className="flex flex-col items-center flex-shrink-0 w-24 h-24 space-y-2"
                 >
                   <img
                     src={category.img}
                     alt={category.name}
-                    className="w-16 h-16 object-cover rounded-full border border-gray-300 shadow transition-transform duration-300 hover:scale-105"
+                    className="object-cover w-16 h-16 transition-transform duration-300 border border-gray-300 rounded-full shadow hover:scale-105"
                   />
                   <p className="text-sm text-gray-700">{category.name}</p>
                 </div>
@@ -75,17 +75,17 @@ const HeroSection = () => {
         </div>
 
         {/* Hero Header Section */}
-        <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0">
+        <div className="flex flex-col items-center justify-between space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/2">
-            <h1 className="text-5xl font-bold mb-4 leading-tight">
-              Fresh from the Farm, <br />
+            <h1 className="mb-4 text-5xl font-bold leading-tight">
+              Fresh from the <span className="text-green-700"> Farm</span>,<br />
               Delivered to Your <span className="text-green-700">Doorstep</span>
             </h1>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="mb-6 text-lg text-gray-600">
               Connecting farmers and consumers for better pricing, fresher
               produce, and a stronger local economy.
             </p>
-            <button className="px-6 py-3 bg-buttonGreen text-white rounded-lg hover:bg-green-700 hover:scale-105 transition-transform shadow-md">
+            <button className="px-6 py-3 text-white transition-transform rounded-lg shadow-md bg-buttonGreen hover:bg-green-700 hover:scale-105">
               Explore Products
             </button>
           </div>
@@ -94,7 +94,7 @@ const HeroSection = () => {
             <img
               src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MAIgGI6xRjMVX4mHIl_GtgHaFY%26pid%3DApi&f=1&ipt=ebbeb55b40112bb955f69bca14f48e9d3d09ceebee36b1c9a8ab6432cab293d7&ipo=images"
               alt="Fresh Produce"
-              className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+              className="transition-transform duration-300 rounded-lg shadow-lg hover:scale-105"
             />
           </div>
         </div>

@@ -17,6 +17,7 @@ const ProductCard = ({ image, text, currentPrice, originalPrice, discount }) => 
         </div>
       </div>
     </div>
+    
   );
 };
 
