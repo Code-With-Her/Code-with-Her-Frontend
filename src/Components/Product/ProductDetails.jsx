@@ -3,7 +3,7 @@ import React from "react";
 
 const ProductCard = ({ image, title, category, price, discount, description }) => {
   return (
-    <div className="w-full p-4 bg-white rounded-lg shadow-md sm:w-64">
+    <div className="w-full p-4 bg-white rounded-lg shadow-md sm:w-80">
       <img src={image} alt={title} className="object-cover w-full h-40 mb-3 rounded-md" />
       <h3 className="text-lg font-bold text-gray-800">{title}</h3>
       <p className="mb-2 text-sm text-gray-500">{category}</p>
@@ -15,7 +15,7 @@ const ProductCard = ({ image, title, category, price, discount, description }) =
       </div>
       <p className="mb-4 text-sm text-gray-600">{description}</p>
       <div className="flex space-x-2">
-        <button className="px-3 py-1 text-white bg-green-500 rounded hover:bg-green-600">BUY</button>
+        <button className="px-3 py-3 rounded pybg-green-500 tex3t-white hover:bg-green-600">BUY</button>
         <button className="px-3 py-1 text-gray-700 bg-gray-200 rounded hover:bg-gray-300">Add to Cart</button>
       </div>
     </div>
@@ -39,6 +39,23 @@ const App = () => {
       price: 25,
       discount: 20,
       description: "Fresh tomatoes perfect for salads and cooking."
+    },
+    
+    {
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8-A9SQ9QnuMs2SMcFkY85THxvQ5nieaz18A&s",
+      title: "cabbages",
+      category: "cabbage",
+      price: 25,
+      discount: 20,
+      description: "Fresh tomatoes perfect for salads and cooking."
+    },
+    {
+      image: "https://www.skorganicfarms.com/cdn/shop/products/bitter-gourd1_800x.jpg?v=1596341934",
+      title: "Bitter gaurd",
+      category: "Bitter Gaurd",
+      price: 25,
+      discount: 20,
+      description: "Fresh tomatoes perfect for salads and cooking."
     }
   ];
 
@@ -58,7 +75,24 @@ const App = () => {
       price: 10,
       discount: 50,
       description: "Juicy lemons with excellent freshness."
-    }
+    },
+    {
+      image: "https://images.ctfassets.net/4f3rgqwzdznj/69J2Y3FEmjaSxSRzf5KU53/2e798fa8702971ef0916794d2faa8ef7/GettyImages-183852454.jpg",
+      title: "Ginger",
+      category: "Ginger",
+      price: 10,
+      discount: 50,
+      description: "Juicy lemons with excellent freshness."
+    },
+    {
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLDWodgwBpIvDh2RctIagebuTteixhSq0Cnw&s",
+      title: "Garlic",
+      category: "Hybrid",
+      price: 10,
+      discount: 50,
+      description: "Juicy lemons with excellent freshness."
+    },
+    
   ];
 
   return (
