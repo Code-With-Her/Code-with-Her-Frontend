@@ -9,7 +9,7 @@ const Signup = () => {
       {/* Illustration */}
       <div className="flex justify-center w-full mb-6 md:w-1/2 md:mb-0">
         <img
-          src="/signup.png"
+          src="https://as1.ftcdn.net/v2/jpg/04/27/59/94/1000_F_427599401_mbTarDavJSHMpkg1u0JmmaGhjWnQgOUI.jpg"
           alt="Signup Illustration"
           className="h-auto max-w-full"
         />
