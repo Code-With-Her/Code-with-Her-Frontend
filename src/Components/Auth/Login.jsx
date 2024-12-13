@@ -1,14 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import signin from '/signin.jpg'
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import signin from '/signin.jpg';
 import Footer from "../Footer/Footer";
 
 function Login() {
   const navigate = useNavigate();
 
-  const handleLoginClick = (e) => {
+  // State for login credentials and feedback messages
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  // Handle input change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle form submission
+  const handleLoginClick = async (e) => {
     e.preventDefault();
-    navigate('/'); // Navigate to the / route
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.data) {
+        // Save the data to cookies
+        Cookies.set('userData', JSON.stringify(response.data), { expires: 7 }); // Cookie expires in 7 days
+        console.log(response.data);
+        // Set success message
+        setSuccess('Login successful!');
+        
+        // Redirect to home page and refresh the page
+        setTimeout(() => {
+          navigate('/'); // Navigate to the homepage
+          window.location.reload(); // Refresh the page after redirection
+        }, 2000); // Delay the refresh to allow the navigation
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || 'Login failed! Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleForgotPasswordClick = (e) => {
@@ -34,7 +79,13 @@ function Login() {
             <h3 className="mb-6 text-2xl font-semibold text-center text-textColor">
               Welcome Back
             </h3>
-            <form>
+
+            {/* Error or Success Messages */}
+            {error && <div className="mb-4 text-sm text-red-600">{error}</div>}
+            {success && <div className="mb-4 text-sm text-green-600">{success}</div>}
+
+            <form onSubmit={handleLoginClick}>
+              {/* Email Input */}
               <div className="mb-4">
                 <label
                   htmlFor="email"
@@ -45,11 +96,16 @@ function Login() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-buttonGreen"
                   placeholder="Enter your email"
                   required
                 />
               </div>
+
+              {/* Password Input */}
               <div className="mb-6">
                 <label
                   htmlFor="password"
@@ -60,18 +116,27 @@ function Login() {
                 <input
                   type="password"
                   id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-buttonGreen"
                   placeholder="Enter your password"
                   required
                 />
               </div>
+
+              {/* Login Button */}
               <div className="flex items-center justify-between mb-6">
                 <button
                   type="submit"
-                  className="px-4 py-2 text-sm font-medium text-white rounded-lg bg-buttonGreen hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-buttonGreen"
-                  onClick={handleLoginClick}
+                  className={`px-4 py-2 text-sm font-medium text-white rounded-lg ${
+                    loading
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-buttonGreen hover:bg-green-800'
+                  } focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-buttonGreen`}
+                  disabled={loading}
                 >
-                  Login
+                  {loading ? 'Logging In...' : 'Login'}
                 </button>
                 <button
                   type="button"
@@ -82,6 +147,7 @@ function Login() {
                 </button>
               </div>
             </form>
+
             <p className="mt-6 text-sm text-center text-gray-600">
               Don't have an account?{' '}
               <a
