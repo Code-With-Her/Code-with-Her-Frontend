@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Cart from "./Components/Product/Cart";
-import Navbar from "./Navbar";
+import Navbar from "./Components/Navbar";
 import Button from "./components/Product/Button";
 import Preloader from "./components/Product/Preloader";
 import Forgetpass from "./components/auth/Forgetpass";
@@ -14,7 +14,7 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
-                <Route path="Navbar" element={<Navbar/>} />
+                <Route path="/Navbar" element={<Navbar/>} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/products" element={<Products/>} />
