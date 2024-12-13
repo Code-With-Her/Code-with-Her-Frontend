@@ -4,6 +4,7 @@ import Cart from "./Components/Product/Cart";
 import Navbar from "./Components/Navbar";
 import Button from "./components/Product/Button";
 import Preloader from "./components/Product/Preloader";
+import Products from "./components/Product/Product";
 import Forgetpass from "./components/auth/Forgetpass";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";

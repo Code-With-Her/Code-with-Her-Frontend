@@ -1,8 +1,6 @@
-
-export default Navbar;
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import CartButton from './Button'; // Adjust the path as necessary
+import CartButton from './Product/Button'; // Adjust the path as necessary
 
 const Navbar = () => {
   const [language, setLanguage] = useState('English');
@@ -76,4 +74,4 @@ const Navbar = () => {
   );
 };
 
-
+export default Navbar;
