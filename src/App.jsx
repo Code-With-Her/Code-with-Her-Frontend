@@ -9,6 +9,7 @@ import Forgetpass from "./components/auth/Forgetpass";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Home from "./Components/Home/Home";
+
 const App = () => {
     return (
         <Router>
