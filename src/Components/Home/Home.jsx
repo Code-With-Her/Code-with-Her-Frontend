@@ -1,10 +1,15 @@
 import React from 'react'
+import Footer from '../footer/Footer'
+import Hero from './Hero'
+import Products from '../product/Products'
 
 function Home() {
   return (
-    <div>
-      <h3>i am home</h3>
-    </div>
+  <>
+  <Hero/>
+  <Products/>
+    <Footer/>
+  </>
   )
 }
 

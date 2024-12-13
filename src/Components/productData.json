@@ -1,0 +1,165 @@
+[
+    {
+      "id": 1,
+      "image": "https://cdn.britannica.com/70/158370-050-CC2F25D4/Carrots-Apiales-members.jpg",
+      "text": "Fresh organic carrots from local farmers.",
+      "currentPrice": 150,
+      "originalPrice": 200,
+      "discount": 25,
+      "category": "Vegetables"
+    },
+    {
+      "id": 2,
+      "image": "https://png.pngtree.com/thumb_back/fh260/background/20241112/pngtree-orrange-tree-realiestic-image-image_16537523.jpg",
+      "text": "Juicy and sweet oranges full of Vitamin C.",
+      "currentPrice": 120,
+      "originalPrice": 150,
+      "discount": 20,
+      "category": "Fruits"
+    },
+    {
+      "id": 3,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIFXpjh94qVA1NZGFpjnPlQRZqhWGS2PpeWg&s",
+      "text": "Fresh ginger to add spice and health benefits.",
+      "currentPrice": 80,
+      "originalPrice": 100,
+      "discount": 20,
+      "category": "Spices"
+    },
+    {
+      "id": 4,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtEcYVAn3g5-XtVUmPHVNCwsNsYXp1amYV6g&s",
+      "text": "Zesty lemons for fresh drinks and flavor.",
+      "currentPrice": 90,
+      "originalPrice": 120,
+      "discount": 25,
+      "category": "Fruits"
+    },
+    {
+      "id": 5,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH9z3rTHdeWV3RtWrouE7jcW8A03K7WWamCQ&s",
+      "text": "Hot and spicy red chilies for your dishes.",
+      "currentPrice": 70,
+      "originalPrice": 90,
+      "discount": 22,
+      "category": "Spices"
+    },
+    {
+      "id": 6,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6K614JUtk2Zkyk76F9pOavNBLHle3A0SZLA&s",
+      "text": "Crisp and fresh apples for a healthy snack.",
+      "currentPrice": 180,
+      "originalPrice": 220,
+      "discount": 18,
+      "category": "Fruits"
+    },
+    {
+      "id": 7,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4t2GRCI-vxm730F6OC76aQIhTeoEVnGLYOQ&s",
+      "text": "Ripe tomatoes perfect for sauces and salads.",
+      "currentPrice": 60,
+      "originalPrice": 80,
+      "discount": 25,
+      "category": "Vegetables"
+    },
+    {
+      "id": 8,
+      "image": "https://gardenerspath.com/wp-content/uploads/2024/03/How-to-Grow-Spinach-Feature.jpg",
+      "text": "Fresh green spinach for nutritious meals.",
+      "currentPrice": 50,
+      "originalPrice": 70,
+      "discount": 28,
+      "category": "Vegetables"
+    },
+    {
+      "id": 9,
+      "image": "https://5.imimg.com/data5/SELLER/Default/2024/4/407486829/AP/XF/QK/66863796/potatos.jpg",
+      "text": "Versatile potatoes for all kinds of dishes.",
+      "currentPrice": 40,
+      "originalPrice": 60,
+      "discount": 33,
+      "category": "Vegetables"
+    },
+    {
+      "id": 10,
+      "image": "https://cdn.britannica.com/70/158370-050-CC2F25D4/Carrots-Apiales-members.jpg",
+      "text": "Fresh organic carrots from local farmers.",
+      "currentPrice": 150,
+      "originalPrice": 200,
+      "discount": 25,
+      "category": "Vegetables"
+    },
+    {
+      "id": 11,
+      "image": "https://png.pngtree.com/thumb_back/fh260/background/20241112/pngtree-orrange-tree-realiestic-image-image_16537523.jpg",
+      "text": "Juicy and sweet oranges full of Vitamin C.",
+      "currentPrice": 120,
+      "originalPrice": 150,
+      "discount": 20,
+      "category": "Fruits"
+    },
+    {
+      "id": 12,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIFXpjh94qVA1NZGFpjnPlQRZqhWGS2PpeWg&s",
+      "text": "Fresh ginger to add spice and health benefits.",
+      "currentPrice": 80,
+      "originalPrice": 100,
+      "discount": 20,
+      "category": "Spices"
+    },
+    {
+      "id": 13,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtEcYVAn3g5-XtVUmPHVNCwsNsYXp1amYV6g&s",
+      "text": "Zesty lemons for fresh drinks and flavor.",
+      "currentPrice": 90,
+      "originalPrice": 120,
+      "discount": 25,
+      "category": "Fruits"
+    },
+    {
+      "id": 14,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH9z3rTHdeWV3RtWrouE7jcW8A03K7WWamCQ&s",
+      "text": "Hot and spicy red chilies for your dishes.",
+      "currentPrice": 70,
+      "originalPrice": 90,
+      "discount": 22,
+      "category": "Spices"
+    },
+    {
+      "id": 15,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6K614JUtk2Zkyk76F9pOavNBLHle3A0SZLA&s",
+      "text": "Crisp and fresh apples for a healthy snack.",
+      "currentPrice": 180,
+      "originalPrice": 220,
+      "discount": 18,
+      "category": "Fruits"
+    },
+    {
+      "id": 16,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4t2GRCI-vxm730F6OC76aQIhTeoEVnGLYOQ&s",
+      "text": "Ripe tomatoes perfect for sauces and salads.",
+      "currentPrice": 60,
+      "originalPrice": 80,
+      "discount": 25,
+      "category": "Vegetables"
+    },
+    {
+      "id": 17,
+      "image": "https://gardenerspath.com/wp-content/uploads/2024/03/How-to-Grow-Spinach-Feature.jpg",
+      "text": "Fresh green spinach for nutritious meals.",
+      "currentPrice": 50,
+      "originalPrice": 70,
+      "discount": 28,
+      "category": "Vegetables"
+    },
+    {
+      "id": 18,
+      "image": "https://5.imimg.com/data5/SELLER/Default/2024/4/407486829/AP/XF/QK/66863796/potatos.jpg",
+      "text": "Versatile potatoes for all kinds of dishes.",
+      "currentPrice": 40,
+      "originalPrice": 60,
+      "discount": 33,
+      "category": "Vegetables"
+    }
+  ]
+  
