@@ -1,5 +1,5 @@
 import React from 'react'
-import React from '../Footer/Footer'
+import Footer from '../Footer/Footer'
 import Hero from './Hero'
 import Products from '../Product/ProductDetails'
 
