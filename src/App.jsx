@@ -9,6 +9,7 @@ import Forgetpass from "./components/Auth/Forgetpass";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Home from "./Components/Home/Home";
+import Productdetails from "./Components/Product/ProductDetails";
 
 const App = () => {
     return (
@@ -24,6 +25,8 @@ const App = () => {
                 <Route path="/preloader" element={<Preloader/>} />
                 <Route path="/Forgetpass" element={<Forgetpass/>} />
                 <Route path="/Button" element={<Button/>} />
+                <Route path="/ProductDetails" element={<Productdetails/>} />
+                
 
 
             </Routes>

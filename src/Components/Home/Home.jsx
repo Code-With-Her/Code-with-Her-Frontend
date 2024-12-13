@@ -1,7 +1,7 @@
 import React from 'react'
-import Footer from '../footer/Footer'
+import React from '../Footer/Footer'
 import Hero from './Hero'
-import Products from '../product/Products'
+import Products from '../Product/ProductDetails'
 
 function Home() {
   return (
