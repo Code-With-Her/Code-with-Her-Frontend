@@ -4,10 +4,10 @@ import Cart from "./Components/Product/Cart";
 import Navbar from "./Components/Navbar";
 import Button from "./Components/Product/Button";
 import Preloader from "./Components/Product/Preloader";
-import Products from "./components/Product/Products";
-import Forgetpass from "./components/Auth/Forgetpass";
-import Login from "./components/auth/Login";
-import Signup from "./components/auth/Signup";
+import Products from "./Components/Product/Products";
+import Forgetpass from "./Components/Auth/Forgetpass";
+import Login from "./Components/Auth/Login";
+import Signup from "./Components/Auth/Signup";
 import Home from "./Components/Home/Home";
 import Productdetails from "./Components/Product/ProductDetails";
 

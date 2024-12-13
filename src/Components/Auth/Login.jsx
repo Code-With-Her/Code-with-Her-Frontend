@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import signin from '/signin.jpg'
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 
 function Login() {
   const navigate = useNavigate();
