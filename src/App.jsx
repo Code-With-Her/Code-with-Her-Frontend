@@ -6,7 +6,7 @@ import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
 import Cart from "./Components/Product/Cart";
 import Preloader from "./components/Product/Preloader";
-import Preloader from "./components/Product/Button";
+import Button from "./components/Product/Button";
 import Forgetpass from "./components/auth/Forgetpass";
 const App = () => {
     return (
@@ -20,7 +20,8 @@ const App = () => {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/preloader" element={<Preloader/>} />
                 <Route path="/Forgetpass" element={<Forgetpass/>} />
-                <Route path="/Navbar" element={<Navbar/>} />
+                <Route path="/Button" element={<Button/>} />
+
 
             </Routes>
         </Router>
