@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Cart from "./Components/Product/Cart";
 import Navbar from "./Navbar";
-import Home from "./components/home/Home";
+import Button from "./components/Product/Button";
+import Preloader from "./components/Product/Preloader";
+import Forgetpass from "./components/auth/Forgetpass";
 import Login from "./components/auth/Login";
 import Signup from "./components/auth/Signup";
-import Cart from "./Components/Product/Cart";
-import Preloader from "./components/Product/Preloader";
-import Button from "./components/Product/Button";
-import Forgetpass from "./components/auth/Forgetpass";
+import Home from "./components/home/Home";
 const App = () => {
     return (
         <Router>
