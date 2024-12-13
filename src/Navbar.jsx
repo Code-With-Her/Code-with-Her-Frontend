@@ -1,7 +1,4 @@
 
-
-
-
 export default Navbar;
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -16,27 +13,27 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-bgColor text-textColor shadow-lg rounded-b-md z-50 px-6 py-4">
+    <nav className="fixed top-0 left-0 z-50 w-full px-6 py-4 shadow-lg bg-bgColor text-textColor rounded-b-md">
       {/* Navbar Container */}
-      <div className="flex items-center justify-between max-w-7xl mx-auto">
+      <div className="flex items-center justify-between mx-auto max-w-7xl">
         {/* Logo Section */}
         <div className="flex items-center space-x-3">
           <Link to="/" aria-label="Home">
             <img
               src="Logo.jpeg" 
               alt="Krishi Connect Logo"
-              className="h-12 sm:h-16 object-contain"
+              className="object-contain h-12 sm:h-16"
             />
           </Link>
         </div>
 
         {/* Search Bar */}
-        <div className="flex-1 mx-4 hidden md:flex">
+        <div className="flex-1 hidden mx-4 md:flex">
           <input
             type="text"
             placeholder={language === 'Nepali' ? 'Hariyo saag' : 'Search potatoes'}
             aria-label="Search"
-            className="w-full px-4 py-2 border border-gray-300 rounded-full outline-none bg-white text-textColor focus:ring-2 focus:ring-buttonGreen shadow-inner"
+            className="w-full px-4 py-2 bg-white border border-gray-300 rounded-full shadow-inner outline-none text-textColor focus:ring-2 focus:ring-buttonGreen"
           />
         </div>
 
@@ -46,7 +43,7 @@ const Navbar = () => {
           <select
             value={language}
             onChange={handleLanguageChange}
-            className="px-3 py-2 border border-gray-300 rounded-full bg-white text-textColor shadow-sm focus:ring-2 focus:ring-buttonGreen cursor-pointer"
+            className="px-3 py-2 bg-white border border-gray-300 rounded-full shadow-sm cursor-pointer text-textColor focus:ring-2 focus:ring-buttonGreen"
             aria-label="Language Selector"
           >
             <option value="English">English</option>
@@ -56,7 +53,7 @@ const Navbar = () => {
           {/* Login Button */}
           <Link
             to="/login"
-            className="font-medium text-textColor hover:text-buttonGreen transition-colors"
+            className="font-medium transition-colors text-textColor hover:text-buttonGreen"
           >
             Log In
           </Link>
@@ -72,7 +69,7 @@ const Navbar = () => {
           type="text"
           placeholder={language === 'Nepali' ? 'Hariyo Saag' : 'Search...'}
           aria-label="Search"
-          className="w-full px-4 py-2 border border-gray-300 rounded-full outline-none bg-white text-textColor focus:ring-2 focus:ring-buttonGreen shadow-inner"
+          className="w-full px-4 py-2 bg-white border border-gray-300 rounded-full shadow-inner outline-none text-textColor focus:ring-2 focus:ring-buttonGreen"
         />
       </div>
     </nav>
