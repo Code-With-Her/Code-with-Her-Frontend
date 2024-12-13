@@ -1,18 +1,17 @@
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import img from "/signin.jpg";
-import L from "leaflet";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    fullname: "",
-    email: "",
-    password: "",
-    phone: "",
-    bio: "",
+    fullname: "jeebu aidi",
+    email: "aidijeewan@gmail.com",
+    password: "1111",
+    phone: "+9779810652734",
+    bio: "I am Preety",
     latitude: "",
     longitude: "",
-    roles: "User", // Default role as 'User'
+    roles: "",  // Default role as 'User'
   });
 
   const [file, setFile] = useState(null);
@@ -20,61 +19,6 @@ const Signup = () => {
   const [signingUp, setSigningUp] = useState(false);
   const [verificationPopup, setVerificationPopup] = useState(false);
   const [step, setStep] = useState(1); // Track the current step
-  const [map, setMap] = useState(null); // State to hold map reference
-  const mapContainer = useRef(null); // Ref for map container
-
-  // Step 1: Get user's current location using the browser's geolocation API
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          
-          // Update the form data with latitude and longitude
-          setFormData((prevData) => ({
-            ...prevData,
-            latitude,
-            longitude,
-          }));
-
-          // Initialize Leaflet map with the user's location
-          if (mapContainer.current && !map) {
-            const initialMap = L.map(mapContainer.current, {
-              center: [latitude, longitude], // Use the user's latitude and longitude
-              zoom: 15,
-            });
-
-            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-              attribution:
-                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            }).addTo(initialMap);
-
-            const marker = L.marker([latitude, longitude]).addTo(initialMap);
-            
-            // Update the latitude and longitude when the map is clicked
-            initialMap.on("click", (e) => {
-              setFormData({
-                ...formData,
-                latitude: e.latlng.lat,
-                longitude: e.latlng.lng,
-              });
-
-              // Move the marker to the clicked location
-              marker.setLatLng(e.latlng);
-            });
-
-            setMap(initialMap); // Save map reference in state
-          }
-        },
-        (error) => {
-          console.error("Error getting geolocation", error);
-        }
-      );
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
-  }, [map, formData]);
 
   // Handle input change for form fields
   const handleChange = (e) => {
@@ -87,6 +31,58 @@ const Signup = () => {
   // Handle file input change
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
+  };
+
+  // Request notification permission and get geolocation
+  const requestGeolocation = async () => {
+    if ('geolocation' in navigator) {
+      // Request geolocation
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          // Update the form data with latitude and longitude
+          setFormData((prevData) => ({
+            ...prevData,
+            latitude,
+            longitude,
+          }));
+
+          // Proceed after getting location
+          askForNotifications();
+        },
+        (error) => {
+          console.error("Error getting geolocation", error);
+          setMessage("Error obtaining geolocation.");
+        }
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  };
+
+  // Ask for notification permission
+  const askForNotifications = async () => {
+    if (Notification.permission !== "granted") {
+      try {
+        await Notification.requestPermission();
+        if (Notification.permission === "granted") {
+          showNotification();
+        }
+      } catch (error) {
+        console.error("Notification permission error:", error);
+      }
+    } else {
+      showNotification();
+    }
+  };
+
+  // Display a notification to the user
+  const showNotification = () => {
+    new Notification("Geolocation Access Granted!", {
+      body: "You can now complete your signup process.",
+    });
   };
 
   // Submit the form data and save it to the database
@@ -121,6 +117,10 @@ const Signup = () => {
   const handlePrev = () => {
     setStep(step - 1);
   };
+
+  useEffect(() => {
+    requestGeolocation(); // Request geolocation when the component is mounted
+  }, []);
 
   return (
     <div className="min-h-screen bg-bgColor flex items-center justify-center py-10 mt-16">
@@ -230,15 +230,7 @@ const Signup = () => {
                     id="img"
                     onChange={handleFileChange}
                     className="w-full px-4 py-2 border rounded-lg"
-                  />
-                </div>
-
-                <div className="mb-4">
-                  <label className="block text-lg mb-2">Set Location on Map</label>
-                  <div
-                    id="map"
-                    ref={mapContainer}
-                    style={{ height: "300px", width: "100%", borderRadius: "8px" }}
+                    required
                   />
                 </div>
               </>
@@ -268,7 +260,7 @@ const Signup = () => {
                 <button
                   type="submit"
                   className="bg-buttonGreen text-white py-2 rounded-lg hover:bg-green-600"
-                  disabled={signingUp}
+                  disabled={signingUp || !file} // Disable if image is not uploaded
                 >
                   {signingUp ? "Signing Up..." : "Sign Up"}
                 </button>

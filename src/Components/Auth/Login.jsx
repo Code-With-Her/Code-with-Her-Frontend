@@ -61,6 +61,10 @@ function Login() {
     navigate('/Forgetpass'); // Navigate to the forgot password page
   };
 
+  const handleSignUpClick = () => {
+    navigate('/signup'); // Navigate to the signup page
+  };
+
   return (
     <>
       <div className="flex items-center justify-center min-h-screen px-4 bg-bgColor">
@@ -150,12 +154,12 @@ function Login() {
 
             <p className="mt-6 text-sm text-center text-gray-600">
               Don't have an account?{' '}
-              <a
-                href="/signup"
+              <button
+                onClick={handleSignUpClick}
                 className="font-medium text-buttonGreen hover:underline"
               >
                 Sign Up
-              </a>
+              </button>
             </p>
           </div>
         </div>
