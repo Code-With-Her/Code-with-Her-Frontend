@@ -1,136 +1,190 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
 
 const Signup = () => {
-  const [role, setRole] = useState(""); // Track selected role
+  const [formData, setFormData] = useState({
+    fullname: "saru",
+    email: "saru@gmail.com",
+    password: "1111",
+    phone: "+977 9810652739",
+    bio: "",
+    latitude: "0", // Set a default value
+    longitude: "0", // Set a default value
+    roles: ["User"], // Default as an array
+  });
+
+  const [file, setFile] = useState(null);
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleMapClick = (lat, lng) => {
+    setFormData({
+      ...formData,
+      latitude: lat,
+      longitude: lng,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+
+    // Append all form data
+    Object.keys(formData).forEach((key) => {
+      if (key === "roles") {
+        // Ensure roles is sent as JSON (array format)
+        data.append(key, JSON.stringify(formData[key]));
+      } else {
+        data.append(key, formData[key]);
+      }
+    });
+
+    if (file) data.append("img", file);
+
+    try {
+      const response = await axios.post("http://localhost:8080/api/register", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage(error.response?.data?.message || "Something went wrong!");
+    }
+  };
 
   return (
-   <>
-     <div className="flex flex-col items-center max-w-4xl p-8 mx-auto mt-20 mb-10 rounded-lg shadow-lg md:flex-row bg-bgColor text-textColor">
-      {/* Illustration */}
-      <div className="flex justify-center w-full mb-6 md:w-1/2 md:mb-0">
-        <img
-          src="https://as1.ftcdn.net/v2/jpg/04/27/59/94/1000_F_427599401_mbTarDavJSHMpkg1u0JmmaGhjWnQgOUI.jpg"
-          alt="Signup Illustration"
-          className="h-auto max-w-full"
-        />
-      </div>
-
-      {/* Form */}
-      <div className="w-full md:w-1/2">
-        <h2 className="mb-6 text-2xl font-bold text-center">Sign Up</h2>
-        <form className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block mb-1 text-sm font-medium">
-              Name
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 mt-16">
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
+        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
+        {message && <div className="mb-4 text-center text-red-500">{message}</div>}
+        <form onSubmit={handleSubmit}>
+          {/* Full Name */}
+          <div className="mb-4">
+            <label className="block text-lg mb-2" htmlFor="fullname">
+              Full Name
             </label>
             <input
               type="text"
-              id="name"
-              placeholder="Enter your name"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-buttonGreen"
+              id="fullname"
+              name="fullname"
+              value={formData.fullname}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg"
+              required
             />
           </div>
-          <div>
-            <label htmlFor="email" className="block mb-1 text-sm font-medium">
+
+          {/* Email */}
+          <div className="mb-4">
+            <label className="block text-lg mb-2" htmlFor="email">
               Email
             </label>
             <input
               type="email"
               id="email"
-              placeholder="Enter your email"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-buttonGreen"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg"
+              required
             />
           </div>
-          <div>
-            <label htmlFor="password" className="block mb-1 text-sm font-medium">
+
+          {/* Password */}
+          <div className="mb-4">
+            <label className="block text-lg mb-2" htmlFor="password">
               Password
             </label>
             <input
               type="password"
               id="password"
-              placeholder="Enter your password"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-buttonGreen"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg"
+              required
             />
           </div>
-          <div>
-            <label
-              htmlFor="confirm-password"
-              className="block mb-1 text-sm font-medium"
-            >
-              Confirm Password
+
+          {/* Phone */}
+          <div className="mb-4">
+            <label className="block text-lg mb-2" htmlFor="phone">
+              Phone
             </label>
             <input
-              type="password"
-              id="confirm-password"
-              placeholder="Confirm your password"
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-buttonGreen"
+              type="text"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg"
+              required
             />
           </div>
-          <div>
-            <label htmlFor="role" className="block mb-1 text-sm font-medium">
-              Role
+
+          {/* Bio */}
+          <div className="mb-4">
+            <label className="block text-lg mb-2" htmlFor="bio">
+              Bio
             </label>
-            <select
-              id="role"
-              onChange={(e) => setRole(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-buttonGreen"
-            >
-              <option value="">Select your role</option>
-              <option value="Farmer">Farmer</option>
-              <option value="Consumer">Consumer</option>
-              <option value="Rider">Rider</option>
-            </select>
+            <textarea
+              id="bio"
+              name="bio"
+              value={formData.bio}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg"
+              required
+            ></textarea>
           </div>
 
-          {/* Conditional Fields */}
-          {role === "Farmer" && (
-            <div>
-              <label
-                htmlFor="citizenship"
-                className="block mb-1 text-sm font-medium"
-              >
-                Citizenship Image
-              </label>
-              <input
-                type="file"
-                id="citizenship"
-                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-buttonGreen"
-              />
-            </div>
-          )}
-          {role === "Rider" && (
-            <div>
-              <label htmlFor="license" className="block mb-1 text-sm font-medium">
-                License Image
-              </label>
-              <input
-                type="file"
-                id="license"
-                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-buttonGreen"
-              />
-            </div>
-          )}
+          {/* Image Upload */}
+          <div className="mb-4">
+            <label className="block text-lg mb-2" htmlFor="img">
+              Profile Picture
+            </label>
+            <input
+              type="file"
+              id="img"
+              onChange={handleFileChange}
+              className="w-full px-4 py-2 border rounded-lg"
+            />
+          </div>
 
-          <button
-            type="submit"
-            className="w-full px-4 py-2 text-lg font-medium transition-colors rounded-md bg-buttonGreen text-bgColor hover:bg-green-700"
-          >
-            Sign Up
-          </button>
+          {/* Location */}
+          <div className="mb-4">
+            <button
+              type="button"
+              onClick={() => handleMapClick(40.73061, -73.935242)} // Example coordinates
+              className="w-full bg-blue-500 text-white py-2 rounded-lg"
+            >
+              Set Location (Example: New York)
+            </button>
+          </div>
 
-          <p className="mt-4 text-sm text-center text-gray-500">
-          Already have an account?{' '}
-          <a href="/login" className="text-buttonGreen hover:underline">
-            Sign in
-          </a>
-        </p>
+          {/* Submit */}
+          <div className="mt-6">
+            <button
+              type="submit"
+              className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600"
+            >
+              Sign Up
+            </button>
+          </div>
         </form>
       </div>
     </div>
-    
-   </>
   );
 };
 
 export default Signup;
-
