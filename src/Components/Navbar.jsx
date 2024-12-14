@@ -54,6 +54,13 @@ const Navbar = () => {
           />
         </div>
 
+        {/* Register User */}
+        <div className="flex items-center space-x-4 mx-5">
+          <Link to="/registerseller" className="text-buttonGreen hover:text-orange">
+            Seller KYC
+          </Link>
+        </div>
+
         {/* Actions Section */}
         <div className="flex items-center space-x-4">
           

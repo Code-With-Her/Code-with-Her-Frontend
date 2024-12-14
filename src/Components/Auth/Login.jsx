@@ -39,6 +39,7 @@ function Login() {
       if (response.data) {
         // Save the data to cookies
         Cookies.set('userData', JSON.stringify(response.data), { expires: 7 }); // Cookie expires in 7 days
+        Cookies.set('token', response.data.token, { expires: 7 });
         console.log(response.data);
         // Set success message
         setSuccess('Login successful!');

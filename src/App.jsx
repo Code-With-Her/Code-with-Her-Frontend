@@ -12,6 +12,7 @@ import Home from "./Components/Home/Home";
 import Profile from "./Components/Profile/Profile"; // Import the Profile Page
 import Productdetails from "./Components/Product/ProductDetails";
 import NotFoundPage from "../src/Components/NotFoundPage"; // Import the 404 Page
+import RegisterSeller from "./Components/Auth/RegisterSeller";
 
 const App = () => {
     return (
@@ -27,6 +28,7 @@ const App = () => {
                 <Route path="/preloader" element={<Preloader />} />
                 <Route path="/forgetpass" element={<Forgetpass />} />
                 <Route path="/button" element={<Button />} />
+                <Route path="/registerseller" element={<RegisterSeller/>} />
                 <Route path="/productdetails" element={<Productdetails />} />
 
                 {/* Profile Routes */}
