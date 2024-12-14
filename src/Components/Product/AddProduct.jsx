@@ -3,10 +3,10 @@ import axios from 'axios';
 import { FiPlus } from 'react-icons/fi'; // Importing React Icon for the "Create" button
 
 const AddProduct = () => {
-  const [productName, setProductName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [stock, setStock] = useState('');
+  const [productName, setProductName] = useState('Ful Gobi');
+  const [description, setDescription] = useState('Fresh fulGobi from nearby');
+  const [price, setPrice] = useState('30');
+  const [stock, setStock] = useState('1');
   const [productImage, setProductImage] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
