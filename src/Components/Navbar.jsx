@@ -24,7 +24,9 @@ const Navbar = () => {
     Cookies.remove('userData'); // Clear the cookie on logout
     setUser(null); // Reset user state
     setDropdownOpen(false); // Close the dropdown
+    window.location.reload(); // Refresh the page after logout
   };
+  
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-bgColor text-textColor shadow-lg z-50 px-6 py-4">
