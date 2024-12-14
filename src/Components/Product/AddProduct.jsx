@@ -7,7 +7,7 @@ const AddProduct = () => {
   const [description, setDescription] = useState('Fresh fulGobi from nearby');
   const [price, setPrice] = useState('30');
   const [stock, setStock] = useState('1');
-  const [productImage, setProductImage] = useState('');
+  const [productImage, setProductImage] = useState('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.gFx6NiKHARprKWoPaUasoQHaFd%26pid%3DApi&f=1&ipt=4b3af963ea7a3d37e298e005c0c360f0f75066e72b7cc850f30abec42d81e6fe&ipo=images');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const colorScheme = {
@@ -71,7 +71,7 @@ const AddProduct = () => {
       {/* Create Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className={`flex items-center justify-center w-14 h-14 fixed lg:top-[86%] top-36 lg:right-10 right-[19%] rounded-full shadow-lg bg-[${colorScheme.buttonGreen}] text-white hover:bg-[${colorScheme.orange}] transition-all z-50`}
+        className={`flex items-center justify-center w-14 h-14 fixed lg:top-[86%] top-36 lg:right-10 left-[89%] rounded-full shadow-lg bg-[${colorScheme.buttonGreen}] text-white hover:bg-[${colorScheme.orange}] transition-all z-50`}
         title="Create Product"
       >
         <FiPlus className="text-3xl" />

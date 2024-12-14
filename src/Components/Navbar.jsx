@@ -41,7 +41,6 @@ const Navbar = () => {
     navigate("/"); // Navigate to the home page on logout
   };
   
-  
   return (
     <nav className="fixed top-0 left-0 w-full bg-bgColor text-textColor shadow-lg z-50 px-6 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
@@ -75,6 +74,13 @@ const Navbar = () => {
             className="font-medium text-textColor hover:text-buttonGreen transition-colors"
           >
             About
+          </Link>
+          {/* Add Cart Link */}
+          <Link
+            to="/cart"
+            className="font-medium text-textColor hover:text-buttonGreen transition-colors"
+          >
+            Cart
           </Link>
         </div>
 
@@ -190,6 +196,13 @@ const Navbar = () => {
           className="font-medium text-textColor hover:text-buttonGreen"
         >
           About
+        </Link>
+        {/* Add Cart Link in Mobile */}
+        <Link
+          to="/cart"
+          className="font-medium text-textColor hover:text-buttonGreen"
+        >
+          Cart
         </Link>
       </div>
     </nav>
