@@ -77,11 +77,10 @@ const HeroSection = () => {
     <section className="py-10 bg-bgColor text-textColor">
       <div className="container px-6 mx-auto lg:px-12">
         {/* Categories Slider */}
-        <div className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold lg:mt-18 mt-20">Browse Categories</h2>
+        <div className="mb-10">
+          <h2 className="mt-20 mb-4 text-2xl font-semibold lg:mt-18">Browse Categories</h2>
           <div className="relative overflow-hidden">
-  <div className="flex py-4 space-x-8 animate-slide-slow lg:pt-6 sm:pt-20
-  ">
+  <div className="flex py-4 space-x-8 animate-slide-slow lg:pt-6 sm:pt-20 ">
 
 
 
@@ -106,15 +105,15 @@ const HeroSection = () => {
         {/* Hero Header Section */}
         <div className="flex flex-col items-center justify-between space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/2">
-            <h1 className="mb-4 text-5xl font-bold leading-tight">
+            <h1 className="mb-4 text-4xl font-bold leading-tight">
               Fresh from the <span className="text-green-700"> Farm</span>,<br />
               Delivered to Your <span className="text-green-700">Doorstep</span>
             </h1>
             <p className="mb-6 text-lg text-gray-600">
-              Connecting farmers and consumers for better pricing, fresher
+               Connecting farmers and consumers for better pricing, fresher
               produce, and a stronger local economy.
             </p>
-            <button className="px-6 py-3 text-white transition-transform rounded-lg  bg-buttonGreen hover:bg-green-700 hover:scale-105">
+            <button className="px-6 py-3 text-white transition-transform rounded-lg bg-buttonGreen hover:bg-green-700 hover:scale-105">
               Explore Products
             </button>
           </div>
@@ -123,7 +122,7 @@ const HeroSection = () => {
   <img
     src={imageUrls[currentImageIndex]}
     alt="Fresh Produce"
-    className="h-80 w-80 transition-transform duration-300 rounded-lg  hover:scale-105"
+    className="transition-transform duration-300 rounded-lg shadow-lg h-80 w-80 hover:scale-105"
   />
 </div>
 
