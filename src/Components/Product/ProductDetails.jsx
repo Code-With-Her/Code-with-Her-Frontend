@@ -25,7 +25,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/products/${id}`);
+        const response = await fetch(`https://code-with-her-backend.onrender.com/api/products/${id}`);
         const data = await response.json();
         if (response.ok) {
           setProduct(data);
@@ -52,7 +52,7 @@ const ProductDetails = () => {
 
       // Send POST request to the API to add the product to the cart
       const response = await axios.post(
-        "http://localhost:8080/api/cart/add",
+        "https://code-with-her-backend.onrender.com/api/cart/add",
         {
           productId: product._id,
           quantity: 1, // or you can dynamically set this based on user input
