@@ -67,7 +67,7 @@ const HeroSection = () => {
     // Set an interval to change the image every 5 seconds
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
-    }, 3000); // 5000ms = 5 seconds
+    }, 5000); // 5000ms = 5 seconds
 
     // Clear the interval when the component is unmounted
     return () => clearInterval(interval);
@@ -92,7 +92,7 @@ const HeroSection = () => {
         <img
           src={category.img}
           alt={category.name}
-          className="object-cover w-16 h-16 transition-transform duration-300 border border-gray-300 rounded-full shadow hover:scale-105"
+          className="object-cover w-16 h-16 transition-transform duration-300 border border-gray-300 rounded-full"
         />
         <p className="text-sm text-gray-700">{category.name}</p>
       </div>
@@ -113,7 +113,7 @@ const HeroSection = () => {
                Connecting farmers and consumers for better pricing, fresher
               produce, and a stronger local economy.
             </p>
-            <button className="px-6 py-3 text-white transition-transform rounded-lg shadow-md bg-buttonGreen hover:bg-green-700 hover:scale-105">
+            <button className="px-6 py-3 text-white transition-transform rounded-lg bg-buttonGreen hover:bg-green-700 hover:scale-105">
               Explore Products
             </button>
           </div>
