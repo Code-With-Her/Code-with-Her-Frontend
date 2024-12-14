@@ -1,6 +1,5 @@
 // Import React and Tailwind CSS
 import React from "react";
-
 const ProductCard = ({ image, title, category, price, discount, description }) => {
   return (
     <div className="w-full p-4 bg-white rounded-lg shadow-md sm:w-80">
@@ -94,7 +93,6 @@ const App = () => {
     },
     
   ];
-
   return (
     <div className="min-h-screen p-8 bg-blue-50">
       <h1 className="mb-6 text-2xl font-bold text-gray-800">Best Products</h1>
@@ -115,3 +113,5 @@ const App = () => {
 };
 
 export default App;
+
+ 
