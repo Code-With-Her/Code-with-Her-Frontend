@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
-  const [language, setLanguage] = useState('English');
+  const [language, setLanguage] = useState("English");
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false); // State to control dropdown visibility
 
   // Fetch user data from cookies on component mount
   useEffect(() => {
-    const userData = Cookies.get('userData'); // Retrieve the data from cookies
+    const userData = Cookies.get("userData"); // Retrieve the data from cookies
     if (userData) {
       setUser(JSON.parse(userData)); // Parse the JSON string into an object
     }
@@ -21,18 +21,16 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    Cookies.remove('userData'); // Clear the cookie on logout
+    Cookies.remove("userData"); // Clear the cookie on logout
     setUser(null); // Reset user state
     setDropdownOpen(false); // Close the dropdown
     window.location.reload(); // Refresh the page after logout
   };
-  
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-bgColor text-textColor shadow-lg z-50 px-6 py-4">
       {/* Navbar Container */}
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        
         {/* Logo Section */}
         <div className="flex items-center space-x-3">
           <Link to="/" aria-label="Home">
@@ -48,22 +46,15 @@ const Navbar = () => {
         <div className="flex-1 mx-4 hidden md:flex justify-center">
           <input
             type="text"
-            placeholder={language === 'Nepali' ? 'कुखुरा खोज्नुहोस्' : 'Search potatoes'}
+            placeholder={
+              language === "Nepali" ? "कुखुरा खोज्नुहोस्" : "Search potatoes"
+            }
             aria-label="Search"
             className="w-96 px-4 py-2 border border-gray-300 rounded-full outline-none bg-white text-textColor focus:ring-2 focus:ring-buttonGreen shadow-inner"
           />
         </div>
-
-        {/* Register User */}
-        <div className="flex items-center space-x-4 mx-5">
-          <Link to="/registerseller" className="text-buttonGreen hover:text-orange">
-            Seller KYC
-          </Link>
-        </div>
-
         {/* Actions Section */}
         <div className="flex items-center space-x-4">
-          
           {/* Language Selector */}
           <select
             value={language}
@@ -89,10 +80,27 @@ const Navbar = () => {
                 <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md p-2 text-textColor">
                   <ul>
                     <li>
-                      <Link to="/profile" className="block px-4 py-2 text-sm hover:bg-gray-200">Profile</Link>
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm hover:bg-gray-200"
+                      >
+                        Profile
+                      </Link>
                     </li>
+                    <Link
+                      to="/registerseller"
+                      className="text-buttonGreen hover:text-orange align-start"
+                    >
+                      Seller KYC
+                    </Link>
+
                     <li>
-                      <Link to="/setting" className="block px-4 py-2 text-sm hover:bg-gray-200">Settings</Link>
+                      <Link
+                        to="/setting"
+                        className="block px-4 py-2 text-sm hover:bg-gray-200"
+                      >
+                        Settings
+                      </Link>
                     </li>
                     <li>
                       <button
@@ -114,7 +122,6 @@ const Navbar = () => {
               Log In
             </Link>
           )}
-
         </div>
       </div>
 
@@ -122,7 +129,9 @@ const Navbar = () => {
       <div className="flex-1 mx-4 mt-2 md:hidden">
         <input
           type="text"
-          placeholder={language === 'Nepali' ? 'कुखुरा खोज्नुहोस्' : 'Search...'}
+          placeholder={
+            language === "Nepali" ? "कुखुरा खोज्नुहोस्" : "Search..."
+          }
           aria-label="Search"
           className="w-full px-4 py-2 border border-gray-300 rounded-full outline-none bg-white text-textColor focus:ring-2 focus:ring-buttonGreen shadow-inner"
         />

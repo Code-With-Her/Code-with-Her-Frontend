@@ -71,7 +71,7 @@ const AddProduct = () => {
       {/* Create Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className={`flex items-center justify-center w-14 h-14 fixed lg:top-[86%] top-36 lg:right-10 left-[19%] rounded-full shadow-lg bg-[${colorScheme.buttonGreen}] text-white hover:bg-[${colorScheme.orange}] transition-all z-50`}
+        className={`flex items-center justify-center w-14 h-14 fixed lg:top-[86%] top-36 lg:right-10 right-[19%] rounded-full shadow-lg bg-[${colorScheme.buttonGreen}] text-white hover:bg-[${colorScheme.orange}] transition-all z-50`}
         title="Create Product"
       >
         <FiPlus className="text-3xl" />
