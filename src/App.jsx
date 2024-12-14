@@ -18,6 +18,7 @@ import ProductDetails from "./Components/Product/ProductDetails";
 import Farmers from "./Components/Farmers";
 import SellerDetails from "./Components/SellerDetails";
 import About from "./Components/About";
+import ProductList from "./Components/Product/Productlist";
 
 const App = () => {
     return (
@@ -27,7 +28,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/products" element={<Products />} />
+                <Route path="/products" element={<ProductList/>} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/preloader" element={<Preloader />} />
                 <Route path="/forgetpass" element={<Forgetpass />} />
