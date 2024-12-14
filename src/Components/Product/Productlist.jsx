@@ -18,7 +18,7 @@ const ProductList = () => {
         const response = await fetch("http://localhost:8080/api/sellers/products", {
           headers,
         });
-        if (!response.ok) throw new Error("Failed to fetch products");
+        if (!response.ok) throw new Error("Login to see Products page");
 
         const data = await response.json();
         if (data && data.products) {

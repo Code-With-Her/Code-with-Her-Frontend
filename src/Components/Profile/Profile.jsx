@@ -63,7 +63,7 @@ const Profile = () => {
   }
 
   if (error) {
-    return <div className="text-center py-4 text-lg text-red-500">{error}</div>;
+    return <div className="text-center py-4 text-lg text-green-500">{error}</div>;
   }
 
   return (
@@ -93,14 +93,14 @@ const Profile = () => {
         <div className="flex items-center justify-start text-lg text-textColor">
           <FaUser className="mr-2 text-xl text-buttonGreen" />
           <p className="font-semibold">Admin Status:</p>
-          <p className={`font-medium ml-2 ${userData.user.isAdmin ? 'text-green-500' : 'text-red-500'}`}>
+          <p className={`font-medium ml-2 ${userData.user.isAdmin ? 'text-green-500' : 'text-green-800'}`}>
             {userData.user.isAdmin ? 'Yes' : 'No'}
           </p>
         </div>
         <div className="flex items-center justify-start text-lg text-textColor">
           <FaCheckCircle className="mr-2 text-xl text-buttonGreen" />
           <p className="font-semibold">Verified:</p>
-          <p className={`font-medium ml-2 ${userData.user.isVerified ? 'text-green-500' : 'text-red-500'}`}>
+          <p className={`font-medium ml-2 ${userData.user.isVerified ? 'text-green-500' : 'text-green-800'}`}>
             {userData.user.isVerified ? 'Yes' : 'No'}
           </p>
         </div>
@@ -128,16 +128,16 @@ const Profile = () => {
       {/* Action Buttons */}
       <div className="mt-8 space-y-4 text-center">
         <div className="flex flex-col items-center sm:space-y-4 lg:space-x-4 lg:flex-row">
-          <button className="bg-transparent border-2 border-red-500 text-red-500 px-4 py-2 rounded-full text-sm font-semibold hover:bg-buttonGreen hover:text-white hover:border-buttonGreen focus:outline-none focus:ring-2 focus:ring-buttonGreen transition duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 flex items-center justify-center space-x-2">
-            <FaEdit className="text-red-500 text-xl hover:text-white" />
+          <button className="bg-transparent border-2 border-green-600 text-green-500 px-4 py-2 rounded-full text-sm font-semibold hover:bg-buttonGreen hover:text-white hover:border-buttonGreen focus:outline-none focus:ring-2 focus:ring-buttonGreen transition duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 flex items-center justify-center space-x-2">
+            <FaEdit className="text-green-500 text-xl hover:text-white" />
             <span>Edit Profile</span>
           </button>
 
           <button
             onClick={handleLogout}
-            className="bg-transparent border-2 border-red-500 text-red-500 px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-600 hover:text-white hover:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 flex items-center justify-center space-x-2"
+            className="bg-transparent border-2 border-green-600 text-green-500 px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-600 hover:text-white hover:border-green-600 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 flex items-center justify-center space-x-2"
           >
-            <BsFillPersonFill className="text-red-500 text-xl hover:text-white" />
+            <BsFillPersonFill className="text-green-500 text-xl hover:text-white" />
             <span>Logout</span>
           </button>
         </div>

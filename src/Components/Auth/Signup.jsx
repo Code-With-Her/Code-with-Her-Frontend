@@ -11,7 +11,7 @@ const Signup = () => {
     bio: "I am Preety",
     latitude: "",
     longitude: "",
-    roles: "",  // Default role as 'User'
+    roles: "User",  // Default role as 'User'
   });
 
   const [file, setFile] = useState(null);
@@ -259,7 +259,7 @@ const Signup = () => {
               ) : (
                 <button
                   type="submit"
-                  className="bg-buttonGreen text-white py-2 rounded-lg hover:bg-green-600"
+                  className="bg-buttonGreen text-white py-2 rounded-lg hover:bg-green-800"
                   disabled={signingUp || !file} // Disable if image is not uploaded
                 >
                   {signingUp ? "Signing Up..." : "Sign Up"}
@@ -283,7 +283,7 @@ const Signup = () => {
             <p className="text-lg mb-6">A verification link has been sent to your email. Please check your email to verify your account and log in.</p>
             <button
               onClick={() => setVerificationPopup(false)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+              className="bg-buttonGreen text-white px-4 py-2 rounded-lg hover:bg-green-800"
             >
               Close
             </button>

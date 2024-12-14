@@ -15,6 +15,8 @@ import NotFoundPage from "./Components/NotFoundPage";
 import RegisterSeller from "./Components/Auth/RegisterSeller";
 import AddProduct from "./Components/Product/AddProduct";
 import ProductDetails from "./Components/Product/ProductDetails";
+import Farmers from "./Components/Farmers";
+import SellerDetails from "./Components/SellerDetails";
 
 const App = () => {
     return (
@@ -34,6 +36,9 @@ const App = () => {
                 <Route path="/productdetails/:id" element={<ProductDetails/>} />  {/* Updated route */}
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/addproduct" element={<AddProduct />} />
+                <Route path="/farmers" element={<Farmers/>} />
+                <Route path="/seller/:id" element={<SellerDetails/>} />
+                
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </Router>

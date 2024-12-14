@@ -111,14 +111,18 @@ const RegisterSeller = () => {
               </div>
               <div>
                 <label className="block mb-2 text-sm font-semibold text-gray-700">Location</label>
-                <input
-                  type="text"
+                <select
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-buttonGreen"
-                  placeholder="Enter your farm's location"
-                />
+                >
+                  <option value="" disabled>Select your location</option>
+                  <option value="Mahendranagar">Mahendranagar</option>
+                  <option value="Bhimdatt">Bhimdatt</option>
+                  <option value="Katan">Katan</option>
+                  <option value="Janaki Tole">Janaki Tole</option>
+                </select>
               </div>
               <div className="text-center">
                 <button

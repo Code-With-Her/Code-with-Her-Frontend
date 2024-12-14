@@ -21,12 +21,27 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
+    // Remove specific cookies
     Cookies.remove("userData");
+    Cookies.remove("token");
+    Cookies.remove("citizenshipIMG");
+    Cookies.remove("farmName");
+    Cookies.remove("location");
+    Cookies.remove("userID");
+  
+    // Clear sessionStorage and localStorage if needed
+    sessionStorage.clear(); // Clears all session data
+    localStorage.clear();   // Clears all localStorage data
+  
+    // Reset the user state
     setUser(null);
     setDropdownOpen(false);
+  
+    // Navigate to home page
     navigate("/"); // Navigate to the home page on logout
   };
-
+  
+  
   return (
     <nav className="fixed top-0 left-0 w-full bg-bgColor text-textColor shadow-lg z-50 px-6 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
