@@ -95,7 +95,7 @@ const Signup = () => {
     if (file) data.append("img", file);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/register", data, {
+      const response = await axios.post("https://code-with-her-backend.onrender.com/api/register", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

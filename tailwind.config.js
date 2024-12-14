@@ -46,6 +46,19 @@ export default {
         'custom-light': '0 4px 6px rgba(0, 0, 0, 0.1)', // Light shadow
         'custom-dark': '0 4px 6px rgba(0, 0, 0, 0.3)',  // Dark shadow
       },
+      animation: {
+        'slide-slow': 'slide 60s linear infinite', // Slow sliding animation for the category slider
+      },
+      keyframes: {
+        slide: {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            transform: 'translateX(-100%)',
+          },
+        },
+      },
     },
   },
   plugins: [],

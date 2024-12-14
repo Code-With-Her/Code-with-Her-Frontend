@@ -1,5 +1,6 @@
 import React from "react";
 
+import { useEffect, useState } from 'react';
 const HeroSection = () => {
   const categories = [
     {
@@ -49,29 +50,57 @@ const HeroSection = () => {
     },
   ];
 
+  const imageUrls = [
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MAIgGI6xRjMVX4mHIl_GtgHaFY%26pid%3DApi&f=1&ipt=ebbeb55b40112bb955f69bca14f48e9d3d09ceebee36b1c9a8ab6432cab293d7&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MAIgGI6xRjMVX4mHIl_GtgHaFY%26pid%3DApi&f=1&ipt=ebbeb55b40112bb955f69bca14f48e9d3d09ceebee36b1c9a8ab6432cab293d7&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.jEX4JOCimX4xQE8-g8yXiQHaHa%26pid%3DApi&f=1&ipt=552f5e575b22459b75184eafe8585a9c8caa2df2296e673865f97a075b0067b3&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F030%2F657%2F553%2Flarge_2x%2Fcabbage-with-transparent-background-high-quality-ultra-hd-free-photo.jpg&f=1&nofb=1&ipt=6ea08521764335705bd6d002ea70fb32623d059abcdc430aefa4eca60a6833c0&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.lQO_IQRGVbE4REX89ddTXwHaFP%26pid%3DApi&f=1&ipt=9ab9a2fe97e8f428e440803e08025e5447c808fb59aeb4f19b6df75cc9bbf944&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.ApNPeVz5kCK5apHIAsud5AHaFj%26pid%3DApi&f=1&ipt=3ce5fca5abb7c9c095fdf4b674e7a51f1dd582c4cd64a64e1fd4b2999669ab09&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.gFx6NiKHARprKWoPaUasoQHaFd%26pid%3DApi&f=1&ipt=4b3af963ea7a3d37e298e005c0c360f0f75066e72b7cc850f30abec42d81e6fe&ipo=images",
+  ];
+
+  // State to track the current image index
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    // Set an interval to change the image every 5 seconds
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+    }, 3000); // 5000ms = 5 seconds
+
+    // Clear the interval when the component is unmounted
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="py-10 bg-bgColor text-textColor">
       <div className="container px-6 mx-auto lg:px-12">
         {/* Categories Slider */}
         <div className="mb-8">
-          <h2 className="mb-4 text-2xl font-semibold">Browse Categories</h2>
+          <h2 className="mb-4 text-2xl font-semibold lg:mt-18 mt-20">Browse Categories</h2>
           <div className="relative overflow-hidden">
-            <div className="flex py-4 space-x-8 animate-slide">
-              {categories.concat(categories).map((category, index) => (
-                <div
-                  key={`${category.id}-${index}`}
-                  className="flex flex-col items-center flex-shrink-0 w-24 h-24 space-y-2"
-                >
-                  <img
-                    src={category.img}
-                    alt={category.name}
-                    className="object-cover w-16 h-16 transition-transform duration-300 border border-gray-300 rounded-full shadow hover:scale-105"
-                  />
-                  <p className="text-sm text-gray-700">{category.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+  <div className="flex py-4 space-x-8 animate-slide-slow lg:pt-6 sm:pt-20
+  ">
+
+
+
+    {categories.concat(categories).map((category, index) => (
+      <div
+        key={`${category.id}-${index}`}
+        className="flex flex-col items-center flex-shrink-0 w-24 h-24 space-y-2"
+      >
+        <img
+          src={category.img}
+          alt={category.name}
+          className="object-cover w-16 h-16 transition-transform duration-300 border border-gray-300 rounded-full shadow hover:scale-105"
+        />
+        <p className="text-sm text-gray-700">{category.name}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
         </div>
 
         {/* Hero Header Section */}
@@ -90,13 +119,14 @@ const HeroSection = () => {
             </button>
           </div>
 
-          <div className="lg:w-1/2">
-            <img
-              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MAIgGI6xRjMVX4mHIl_GtgHaFY%26pid%3DApi&f=1&ipt=ebbeb55b40112bb955f69bca14f48e9d3d09ceebee36b1c9a8ab6432cab293d7&ipo=images"
-              alt="Fresh Produce"
-              className="transition-transform duration-300 rounded-lg shadow-lg hover:scale-105"
-            />
-          </div>
+          <div className="lg:w-1/2 lg:pl-28 sm:pl-2">
+  <img
+    src={imageUrls[currentImageIndex]}
+    alt="Fresh Produce"
+    className="h-80 w-80 transition-transform duration-300 rounded-lg shadow-lg hover:scale-105"
+  />
+</div>
+
         </div>
       </div>
     </section>
