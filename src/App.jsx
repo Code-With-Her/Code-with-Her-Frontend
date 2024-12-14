@@ -9,17 +9,18 @@ import Forgetpass from "./Components/Auth/Forgetpass";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
 import Home from "./Components/Home/Home";
-import Profile from "./Components/Profile/Profile"; // Import the Profile Page
-import Productdetails from "./Components/Product/ProductDetails";
-import NotFoundPage from "../src/Components/NotFoundPage"; // Import the 404 Page
+import Profile from "./Components/Profile/Profile";
+import Productdetails from "./Components/Product/ProductDetails";  // Correct import for ProductDetails
+import NotFoundPage from "./Components/NotFoundPage";
 import RegisterSeller from "./Components/Auth/RegisterSeller";
+import AddProduct from "./Components/Product/AddProduct";
+import ProductDetails from "./Components/Product/ProductDetails";
 
 const App = () => {
     return (
         <Router>
             <Navbar />
             <Routes>
-                {/* Main routes */}
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
@@ -28,14 +29,12 @@ const App = () => {
                 <Route path="/preloader" element={<Preloader />} />
                 <Route path="/forgetpass" element={<Forgetpass />} />
                 <Route path="/button" element={<Button />} />
-                <Route path="/registerseller" element={<RegisterSeller/>} />
-                <Route path="/productdetails" element={<Productdetails />} />
-
-                {/* Profile Routes */}
-                <Route path="/profile" element={<Profile/>} />
-                
-                {/* 404 route */}
-                <Route path="*" element={<NotFoundPage />} /> 
+                <Route path="/registerseller" element={<RegisterSeller />} />
+                <Route path="/productdetails" element={<Products />} />
+                <Route path="/productdetails/:id" element={<ProductDetails/>} />  {/* Updated route */}
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/addproduct" element={<AddProduct />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </Router>
     );
