@@ -84,7 +84,7 @@ const ProductList = () => {
                 <p className="text-body-4 text-gray-600">Stock: {product.stock} Kg</p>
               </div>
               <button className="mt-6 w-full bg-green-100 text-[#1c1d1c]  hover:text-[#eff6ff] py-2 rounded-lg hover:bg-buttonGreen transition-all">
-                Add to Cart
+               More Details
               </button>
             </div>
           </div>
