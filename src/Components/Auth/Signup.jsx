@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import img from "/signin.jpg";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    fullname: "jeebu aidi",
-    email: "aidijeewan@gmail.com",
-    password: "1111",
-    phone: "+9779810652734",
-    bio: "I am Preety",
+    fullname: "",
+    email: "",
+    password: "",
+    phone: "+977",
+    bio: "",
     latitude: "",
     longitude: "",
     roles: "User",  // Default role as 'User'
@@ -19,6 +20,8 @@ const Signup = () => {
   const [signingUp, setSigningUp] = useState(false);
   const [verificationPopup, setVerificationPopup] = useState(false);
   const [step, setStep] = useState(1); // Track the current step
+
+  const navigate = useNavigate(); // Initialize navigate
 
   // Handle input change for form fields
   const handleChange = (e) => {
@@ -122,6 +125,12 @@ const Signup = () => {
     requestGeolocation(); // Request geolocation when the component is mounted
   }, []);
 
+  // Handle closing the verification popup and redirecting to login
+  const handleClosePopup = () => {
+    setVerificationPopup(false);
+    navigate("/login"); // Navigate to login after closing the popup
+  };
+
   return (
     <div className="min-h-screen bg-bgColor flex items-center justify-center py-10 mt-16">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -141,7 +150,8 @@ const Signup = () => {
                     name="fullname"
                     value={formData.fullname}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="w-full px-4 py-2 border rounded-lg placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-800 shadow-inner"
+                    placeholder="Enter your full name"
                     required
                   />
                 </div>
@@ -154,7 +164,8 @@ const Signup = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="w-full px-4 py-2 border rounded-lg placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-800 shadow-inner"
+                    placeholder="Enter your email"
                     required
                   />
                 </div>
@@ -167,7 +178,8 @@ const Signup = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="w-full px-4 py-2 border rounded-lg placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-800 shadow-inner"
+                    placeholder="Enter your password"
                     required
                   />
                 </div>
@@ -185,7 +197,8 @@ const Signup = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="w-full px-4 py-2 border rounded-lg placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-800 shadow-inner"
+                    placeholder="Enter your phone number"
                     required
                   />
                 </div>
@@ -197,7 +210,8 @@ const Signup = () => {
                     name="bio"
                     value={formData.bio}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="w-full px-4 py-2 border rounded-lg placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-800 shadow-inner"
+                    placeholder="Write something about yourself"
                     required
                   ></textarea>
                 </div>
@@ -208,7 +222,7 @@ const Signup = () => {
                     name="roles"
                     value={formData.roles}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg"
+                    className="w-full px-4 py-2 border rounded-lg placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-800 shadow-inner"
                     required
                   >
                     <option value="User">User</option>
@@ -252,14 +266,14 @@ const Signup = () => {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                  className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
                 >
                   Next
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="bg-buttonGreen text-white py-2 rounded-lg hover:bg-green-800"
+                  className="bg-buttonGreen text-white py-2 rounded-lg hover:bg-green-800 w-[30%]"
                   disabled={signingUp || !file} // Disable if image is not uploaded
                 >
                   {signingUp ? "Signing Up..." : "Sign Up"}
@@ -282,7 +296,7 @@ const Signup = () => {
             <h2 className="text-2xl font-bold mb-4">Verify Your Email</h2>
             <p className="text-lg mb-6">A verification link has been sent to your email. Please check your email to verify your account and log in.</p>
             <button
-              onClick={() => setVerificationPopup(false)}
+              onClick={handleClosePopup} // Call handleClosePopup when the button is clicked
               className="bg-buttonGreen text-white px-4 py-2 rounded-lg hover:bg-green-800"
             >
               Close

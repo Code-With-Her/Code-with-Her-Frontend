@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { useEffect, useState } from 'react';
 const HeroSection = () => {
   const categories = [
     {
@@ -50,6 +49,7 @@ const HeroSection = () => {
     },
   ];
 
+
   const imageUrls = [
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MAIgGI6xRjMVX4mHIl_GtgHaFY%26pid%3DApi&f=1&ipt=ebbeb55b40112bb955f69bca14f48e9d3d09ceebee36b1c9a8ab6432cab293d7&ipo=images",
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.MAIgGI6xRjMVX4mHIl_GtgHaFY%26pid%3DApi&f=1&ipt=ebbeb55b40112bb955f69bca14f48e9d3d09ceebee36b1c9a8ab6432cab293d7&ipo=images",
@@ -60,16 +60,13 @@ const HeroSection = () => {
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.gFx6NiKHARprKWoPaUasoQHaFd%26pid%3DApi&f=1&ipt=4b3af963ea7a3d37e298e005c0c360f0f75066e72b7cc850f30abec42d81e6fe&ipo=images",
   ];
 
-  // State to track the current image index
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    // Set an interval to change the image every 5 seconds
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
-    }, 5000); // 5000ms = 5 seconds
+    }, 5000);
 
-    // Clear the interval when the component is unmounted
     return () => clearInterval(interval);
   }, []);
 
@@ -80,37 +77,32 @@ const HeroSection = () => {
         <div className="mb-10">
           <h2 className="mt-20 mb-4 text-2xl font-semibold lg:mt-18">Browse Categories</h2>
           <div className="relative overflow-hidden">
-  <div className="flex py-4 space-x-8 animate-slide-slow lg:pt-6 sm:pt-20 ">
-
-
-
-    {categories.concat(categories).map((category, index) => (
-      <div
-        key={`${category.id}-${index}`}
-        className="flex flex-col items-center flex-shrink-0 w-24 h-24 space-y-2"
-      >
-        <img
-          src={category.img}
-          alt={category.name}
-          className="object-cover w-16 h-16 transition-transform duration-300 border border-gray-300 rounded-full"
-        />
-        <p className="text-sm text-gray-700">{category.name}</p>
-      </div>
-    ))}
-  </div>
-</div>
-
+            <div className="flex py-4 space-x-8 animate-slide-slow lg:pt-6 sm:pt-20">
+              {categories.concat(categories).map((category, index) => (
+                <div key={`${category.id}-${index}`} className="flex flex-col items-center flex-shrink-0 w-24 h-24 space-y-2">
+                  <a href={category.url} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={category.img}
+                      alt={category.name}
+                      className="object-cover w-16 h-16 transition-transform duration-300 border border-gray-300 rounded-full"
+                    />
+                  </a>
+                  <p className="text-sm text-gray-700">{category.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Hero Header Section */}
         <div className="flex flex-col items-center justify-between space-y-8 lg:flex-row lg:space-y-0">
           <div className="lg:w-1/2">
             <h1 className="mb-4 text-4xl font-bold leading-tight">
-              Fresh from the <span className="text-green-700"> Farm</span>,<br />
+              Fresh from the <span className="text-green-700">Farm</span>,<br />
               Delivered to Your <span className="text-green-700">Doorstep</span>
             </h1>
             <p className="mb-6 text-lg text-gray-600">
-               Connecting farmers and consumers for better pricing, fresher
+              Connecting farmers and consumers for better pricing, fresher
               produce, and a stronger local economy.
             </p>
             <button className="px-6 py-3 text-white transition-transform rounded-lg bg-buttonGreen hover:bg-green-700 hover:scale-105">
@@ -119,13 +111,14 @@ const HeroSection = () => {
           </div>
 
           <div className="lg:w-1/2 lg:pl-28 sm:pl-2">
-  <img
-    src={imageUrls[currentImageIndex]}
-    alt="Fresh Produce"
-    className="transition-transform duration-300 rounded-lg shadow-lg h-80 w-80 hover:scale-105"
-  />
-</div>
-
+            <a href={imageUrls[currentImageIndex]} target="_blank" rel="noopener noreferrer">
+              <img
+                src={imageUrls[currentImageIndex]}
+                alt="Fresh Produce"
+                className="transition-transform duration-300 rounded-lg shadow-lg h-80 w-80 hover:scale-105"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </section>

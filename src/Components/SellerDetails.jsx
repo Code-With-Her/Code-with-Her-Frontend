@@ -111,7 +111,7 @@ const SellerDetails = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400 transition-all"
+            className="w-full bg-green-800 text-white py-3 px-6 rounded-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-400 transition-all"
           >
             {loading ? "Submitting..." : "Submit Review"}
           </button>

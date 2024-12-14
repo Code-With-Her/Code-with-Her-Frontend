@@ -17,6 +17,7 @@ import AddProduct from "./Components/Product/AddProduct";
 import ProductDetails from "./Components/Product/ProductDetails";
 import Farmers from "./Components/Farmers";
 import SellerDetails from "./Components/SellerDetails";
+import About from "./Components/About";
 
 const App = () => {
     return (
@@ -38,6 +39,8 @@ const App = () => {
                 <Route path="/addproduct" element={<AddProduct />} />
                 <Route path="/farmers" element={<Farmers/>} />
                 <Route path="/seller/:id" element={<SellerDetails/>} />
+                {/* About sectio */}
+                <Route path="/about" element={<About/>} />
                 
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

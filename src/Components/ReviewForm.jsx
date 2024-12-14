@@ -53,7 +53,7 @@ const ReviewForm = () => {
             htmlFor="sellerId"
             className="flex items-center text-gray-700"
           >
-            <FaIdBadge className="mr-2 text-blue-500" /> Seller ID
+            <FaIdBadge className="mr-2 text-green-800" /> Seller ID
           </label>
           <input
             type="text"
