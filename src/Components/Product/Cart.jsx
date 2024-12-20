@@ -30,7 +30,7 @@ const Cart = () => {
     }
 
     try {
-      const response = await axios.get("https://code-with-her-backend.onrender.com/api/cart/status", {
+      const response = await axios.get("http://localhost:8080/api/cart/status", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -58,7 +58,7 @@ const Cart = () => {
     }
 
     try {
-      const response = await axios.delete("https://code-with-her-backend.onrender.com/api/cart/clear", {
+      const response = await axios.delete("http://localhost:8080/api/cart/clear", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

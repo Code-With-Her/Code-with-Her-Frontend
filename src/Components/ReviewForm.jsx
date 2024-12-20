@@ -21,7 +21,7 @@ const ReviewForm = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://code-with-her-backend.onrender.com/api/reviews/",
+        "http://localhost:8080/api/reviews/",
         {
           sellerId,
           reviewText,

@@ -46,7 +46,7 @@ const AddProduct = () => {
 
     try {
       const response = await axios.post(
-        'https://code-with-her-backend.onrender.com/api/sellers/addproduct',
+        'http://localhost:8080/api/sellers/addproduct',
         requestBody,
         {
           headers: {

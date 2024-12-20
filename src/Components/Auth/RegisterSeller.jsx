@@ -44,7 +44,7 @@ const RegisterSeller = () => {
 
     try {
       const response = await axios.post(
-        'https://code-with-her-backend.onrender.com/api/sellers/registerseller',
+        'http://localhost:8080/api/sellers/registerseller',
         requestBody,
         {
           headers: {
