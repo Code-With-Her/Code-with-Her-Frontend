@@ -11,7 +11,7 @@ const Farmers = () => {
   useEffect(() => {
     const fetchSellers = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/sellers/');
+        const response = await axios.get('https://code-with-her-backend.onrender.com/api/sellers/');
         setSellers(response.data.sellers); // Assuming the response has a 'sellers' array
         setLoading(false);
       } catch (error) {
