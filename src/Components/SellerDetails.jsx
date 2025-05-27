@@ -16,11 +16,11 @@ const SellerDetails = () => {
     const fetchSellerAndReviews = async () => {
       try {
         // Fetch seller details
-        const sellerResponse = await axios.get(`https://code-with-her-backend.onrender.com/api/sellers/sellers/${id}`);
+        const sellerResponse = await axios.get(`https://code-with-her-backend-production.up.railway.app/api/sellers/sellers/${id}`);
         setSeller(sellerResponse.data.seller);
 
         // Fetch reviews for the seller
-        const reviewsResponse = await axios.get(`https://code-with-her-backend.onrender.com/api/reviews/${id}`);
+        const reviewsResponse = await axios.get(`https://code-with-her-backend-production.up.railway.app/api/reviews/${id}`);
         setReviews(reviewsResponse.data.reviews || []); // Ensure reviews is an array
 
         setLoading(false);
@@ -49,7 +49,7 @@ const SellerDetails = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://code-with-her-backend.onrender.com/api/reviews/",
+          "https://code-with-her-backend-production.up.railway.app/api/reviews/",
           {
             sellerId: id, // Use the seller's ID from the URL
             reviewText,
@@ -63,7 +63,7 @@ const SellerDetails = () => {
         setRating(1); // Reset the rating
 
         // Refresh reviews after submitting
-        const updatedReviews = await axios.get(`https://code-with-her-backend.onrender.com/api/reviews/${id}`);
+        const updatedReviews = await axios.get(`https://code-with-her-backend-production.up.railway.app/api/reviews/${id}`);
         setReviews(updatedReviews.data.reviews || []); // Ensure reviews is an array
       } catch (error) {
         console.error("Error submitting review:", error);

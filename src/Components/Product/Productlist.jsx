@@ -15,7 +15,7 @@ const ProductList = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       try {
-        const response = await fetch("https://code-with-her-backend.onrender.com/api/sellers/products", {
+        const response = await fetch("https://code-with-her-backend-production.up.railway.app/api/sellers/products", {
           headers,
         });
         if (!response.ok) throw new Error("Login to see Products page");
